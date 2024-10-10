@@ -16,42 +16,42 @@ public class HlavniProgram {
     Sportka druhyTah = new Sportka();
 
     System.out.println("Probíhá losování prvního tahu Sportky…");
-    prvniTah.zamichat();
-    overeniVysledku(prvniTah);
-    vypisVysledku(prvniTah);
+    prvniTah.zamichej();
+    overVysledky(prvniTah);
+    vypisVysledky(prvniTah);
 
     System.out.println();
 
     System.out.println("Probíhá losování druhého tahu Sportky…");
-    druhyTah.zamichat();
-    overeniVysledku(druhyTah);
-    vypisVysledku(druhyTah);
+    druhyTah.zamichej();
+    overVysledky(druhyTah);
+    vypisVysledky(druhyTah);
 
     System.out.println();
     System.out.println("Výhercům gratulujeme");
 
   }
 
-  private static void vypisVysledku(Sportka sportka) {
-    System.out.printf("Vylosovaná čísla: %s.", sportka.vylosovanaCisla()
+  private static void vypisVysledky(Sportka sportka) {
+    System.out.printf("Vylosovaná čísla: %s.", sportka.dejVylosovanaCisla()
                     .stream()
                     .map(cislo -> Integer.toString(cislo))
                     .collect(Collectors.joining(", ")))
             .println();
-    System.out.printf("Dodatkové číslo: %d.", sportka.dodatkoveCislo())
+    System.out.printf("Dodatkové číslo: %d.", sportka.dejDodatkoveCislo())
             .println();
   }
 
-  private static void overeniVysledku(Sportka sportka) {
-    List<Integer> vylosovanaCisla = Objects.requireNonNull(sportka.vylosovanaCisla(), "Chybí vylosovaná čísla.");
-    Integer dodatkoveCislo = Objects.requireNonNull(sportka.dodatkoveCislo(), "Chybí dodatkové číslo.");
+  private static void overVysledky(Sportka sportka) {
+    List<Integer> vylosovanaCisla = Objects.requireNonNull(sportka.dejVylosovanaCisla(), "Chybí vylosovaná čísla.");
+    Integer dodatkoveCislo = Objects.requireNonNull(sportka.dejDodatkoveCislo(), "Chybí dodatkové číslo.");
 
     if (vylosovanaCisla.size() != 6) {
       throw new IllegalArgumentException(String.format("Vylosovaných čísel musí být 6, ve skutečnosti jich je %d.", vylosovanaCisla.size()));
     }
 
-    vylosovanaCisla.forEach(HlavniProgram::overitCislo);
-    overitCislo(dodatkoveCislo);
+    vylosovanaCisla.forEach(HlavniProgram::overCislo);
+    overCislo(dodatkoveCislo);
 
     Set<Integer> tazenaCisla = new HashSet<>();
     tazenaCisla.add(dodatkoveCislo);
@@ -65,7 +65,7 @@ public class HlavniProgram {
     System.out.println("Státní notář ověřil tah a vylosované čísla jsou platná.");
   }
 
-  private static void overitCislo(Integer cislo) {
+  private static void overCislo(Integer cislo) {
     if (cislo < 1 || cislo > 49) {
       throw new IllegalArgumentException(String.format("Vylosované číslo %d je mimo očekávaný rozsah 1–49.", cislo));
     }
