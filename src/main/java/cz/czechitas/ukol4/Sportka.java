@@ -32,8 +32,7 @@ public class Sportka {
    * @see List#subList(int, int)
    */
   public List<Integer> dejVylosovanaCisla() {
-    List VylosovanaCisla = osudi.subList(0, 6);
-    return VylosovanaCisla;
+    return osudi.subList(0, 6);
   }
 
   /**
@@ -42,7 +41,6 @@ public class Sportka {
    * @return Dodatkové číslo.
    */
   public Integer dejDodatkoveCislo() {
-    int DodatkoveCislo = osudi.get(6);
-    return DodatkoveCislo;
+    return osudi.get(6);
   }
 }
