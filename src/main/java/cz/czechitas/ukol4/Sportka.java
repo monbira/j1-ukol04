@@ -22,7 +22,7 @@ public class Sportka {
    * @see Collections#shuffle(List)
    */
   public void zamichej() {
-    //TODO zamíchat osudí
+    Collections.shuffle(osudi);
   }
 
   /**
@@ -32,8 +32,8 @@ public class Sportka {
    * @see List#subList(int, int)
    */
   public List<Integer> dejVylosovanaCisla() {
-    //TODO Vrátit seznam prvních 6 čísel z osudí.
-    return null;
+    List VylosovanaCisla = osudi.subList(0, 6);
+    return VylosovanaCisla;
   }
 
   /**
@@ -42,7 +42,7 @@ public class Sportka {
    * @return Dodatkové číslo.
    */
   public Integer dejDodatkoveCislo() {
-    //TODO Vrátit sedmé číslo z osudí.
-    return null;
+    int DodatkoveCislo = osudi.get(6);
+    return DodatkoveCislo;
   }
 }
